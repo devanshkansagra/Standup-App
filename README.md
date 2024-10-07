@@ -21,15 +21,10 @@ rc-apps deploy --url host_url --username your_username --password your_password
 
 Make sure to replace `host_url`, `your_username`, and `your_password` with your Rocket Chat server URL, username, and password respectively.
 
-Note: You must have a Rocket Chat server set up. If you haven't set up a Rocket Chat server yet, follow this [link](https://developer.rocket.chat/open-source-projects/server/server-environment-setup) for instructions.
+Note: 
+- You must have a Rocket Chat server set up. If you haven't set up a Rocket Chat server yet, follow this [link](https://developer.rocket.chat/open-source-projects/server/server-environment-setup) for instructions.
+- You must have Rocket Chat CLI installed in your system to run `rc-apps` command. You can this install via
 
-## Documentation
-Here are some links to examples and documentation:
-- [Rocket.Chat Apps TypeScript Definitions Documentation](https://rocketchat.github.io/Rocket.Chat.Apps-engine/)
-- [Rocket.Chat Apps TypeScript Definitions Repository](https://github.com/RocketChat/Rocket.Chat.Apps-engine)
-- [Example Rocket.Chat Apps](https://github.com/graywolf336/RocketChatApps)
-- Community Forums
-  - [App Requests](https://forums.rocket.chat/c/rocket-chat-apps/requests)
-  - [App Guides](https://forums.rocket.chat/c/rocket-chat-apps/guides)
-  - [Top View of Both Categories](https://forums.rocket.chat/c/rocket-chat-apps)
-- [#rocketchat-apps on Open.Rocket.Chat](https://open.rocket.chat/channel/rocketchat-apps)
+  ```
+  npm install -g @rocket.chat/apps-cli
+  ```
