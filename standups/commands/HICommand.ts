@@ -1,4 +1,4 @@
-import { IRead } from "@rocket.chat/apps-engine/definition/accessors";
+import { IModify, IRead } from "@rocket.chat/apps-engine/definition/accessors";
 import { IRoom } from "@rocket.chat/apps-engine/definition/rooms";
 import {
     ISlashCommand,
@@ -14,24 +14,19 @@ export class HICommand implements ISlashCommand {
 
     public async executor(
         context: SlashCommandContext,
-        read: IRead
+        read: IRead,
+        modify: IModify
     ): Promise<void> {
         const user = context.getSender();
         const room: IRoom = context.getRoom();
 
-        await this.notifyMessage(room, read, user, "Hello " + user.username);
+        await this.sendMessage(room, user, modify, "Hello "+user.username);
     }
 
-    private async notifyMessage(
-        room: IRoom,
-        read: IRead,
-        sender: IUser,
-        message: string
-    ): Promise<void> {
-        const notifier = read.getNotifier();
-        const messageBuilder = notifier.getMessageBuilder();
-        messageBuilder.setText(message);
-        messageBuilder.setRoom(room);
-        return notifier.notifyUser(sender, messageBuilder.getMessage());
+    private async sendMessage(room: IRoom, sender: IUser ,modify: IModify, message: string) {
+        let messageStructure = modify.getCreator().startMessage();
+        messageStructure.setRoom(room);
+        messageStructure.setText(message);
+        await modify.getCreator().finish(messageStructure)
     }
 }
