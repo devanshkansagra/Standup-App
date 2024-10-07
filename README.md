@@ -1,14 +1,27 @@
-# standups
+# Standup-App
 The Standup app for Rocket.Chat is a tool designed to facilitate daily standup meetings by allowing team members to quickly share their updates and progress in a structured format.
 
-## Getting Started
-Now that you have generated a blank default Rocket.Chat App, what are you supposed to do next?
-Start developing! Open up your favorite editor, our recommended one is Visual Studio code,
-and start working on your App. Once you have something ready to test, you can either
-package it up and manually deploy it to your test instance or you can use the CLI to do so.
-Here are some commands to get started:
-- `rc-apps package`: this command will generate a packaged app file (zip) which can be installed **if** it compiles with TypeScript
-- `rc-apps deploy`: this will do what `package` does but will then ask you for your server url, username, and password to deploy it for you
+## Installation
+
+To install this app, follow these steps:
+
+1. Clone this repository to your local machine:
+
+```
+git clone https://github.com/devanshkansagra/Standup-App
+```
+
+2. Navigate to the `standups` directory.
+
+3. Open a command window and run the following command:
+
+```
+rc-apps deploy --url host_url --username your_username --password your_password
+```
+
+Make sure to replace `host_url`, `your_username`, and `your_password` with your Rocket Chat server URL, username, and password respectively.
+
+Note: You must have a Rocket Chat server set up. If you haven't set up a Rocket Chat server yet, follow this [link](https://developer.rocket.chat/open-source-projects/server/server-environment-setup) for instructions.
 
 ## Documentation
 Here are some links to examples and documentation:
