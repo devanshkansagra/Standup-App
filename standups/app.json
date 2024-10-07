@@ -1,7 +1,7 @@
 {
     "id": "6602881c-9fa5-4add-8c43-8d7706ad9c57",
     "version": "0.0.1",
-    "requiredApiVersion": "^1.4.0",
+    "requiredApiVersion": "^1.19.0",
     "iconFile": "icon.png",
     "author": {
         "name": "Devansh Kansagra",
@@ -11,5 +11,6 @@
     "name": "standups",
     "nameSlug": "standups",
     "classFile": "StandupsApp.ts",
-    "description": "The Standup app for Rocket.Chat is a tool designed to facilitate daily standup meetings by allowing team members to quickly share their updates and progress in a structured format."
+    "description": "The Standup app for Rocket.Chat is a tool designed to facilitate daily standup meetings by allowing team members to quickly share their updates and progress in a structured format.",
+    "implements": []
 }
