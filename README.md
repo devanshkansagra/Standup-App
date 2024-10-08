@@ -13,7 +13,7 @@ git clone https://github.com/devanshkansagra/Standup-App
 
 2. Navigate to the `standups` directory.
 
-3. Open a command window and run the following command:
+3. Open Terminal (or CMD in Windows) and run the following command:
 
 ```
 rc-apps deploy --url host_url --username your_username --password your_password
