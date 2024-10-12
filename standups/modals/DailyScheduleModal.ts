@@ -1,10 +1,11 @@
-import { IModify } from "@rocket.chat/apps-engine/definition/accessors";
+import { IModify, IUIKitInteractionParam } from "@rocket.chat/apps-engine/definition/accessors";
 import { SlashCommandContext } from "@rocket.chat/apps-engine/definition/slashcommands";
 import {
     UIKitInteractionContext,
     UIKitSurfaceType,
     UIKitViewCloseInteractionContext,
 } from "@rocket.chat/apps-engine/definition/uikit";
+import { StandupsApp } from "../StandupsApp";
 
 export class DailyScheduleModal {
     public modify: IModify;
@@ -128,23 +129,17 @@ export class DailyScheduleModal {
 
                         },
                     },
-                    {
-                        type: "actions",
-                        elements: [
-                            {
-                                type: "button",
-                                text: {
-                                    type: "plain_text",
-                                    text: "Submit",
-                                },
-                                actionId: "submit_button",
-                                appId: this.slashCommandContext.getSender().id,
-                                blockId: "submit_button_block",
-                                style: "primary",
-                            },
-                        ],
-                    },
                 ],
+                submit: {
+                    type: "button",
+                    text: {
+                        type: "plain_text",
+                        text: "Submit"
+                    },
+                    appId: this.slashCommandContext.getSender().id,
+                    blockId: "submit_block",
+                    actionId: "submit_action"
+                }
             },
             { triggerId: this.slashCommandContext.getTriggerId()! },
             this.slashCommandContext.getSender()

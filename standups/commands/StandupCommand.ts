@@ -13,6 +13,7 @@ import { IUser } from "@rocket.chat/apps-engine/definition/users";
 import { CommandEnum } from "../enums/commandEnum";
 import { UIKitSurfaceType } from "@rocket.chat/apps-engine/definition/uikit";
 import { DailyScheduleModal } from "../modals/DailyScheduleModal";
+import { StandupsApp } from "../StandupsApp";
 
 export class StandupCommand implements ISlashCommand {
     i18nParamsExample: string = "";
