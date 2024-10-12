@@ -42,8 +42,7 @@ export class StandupCommand implements ISlashCommand {
         if (params[0] === CommandEnum.SCHEDULE && params[1] === "daily") {
             const dailyScheduleModal = new DailyScheduleModal(
                 modify,
-                slashCommandContext,
-
+                slashCommandContext
             ).createDailyScheduleModal();
             console.log(dailyScheduleModal);
         }

@@ -1,4 +1,7 @@
-import { IModify, IUIKitInteractionParam } from "@rocket.chat/apps-engine/definition/accessors";
+import {
+    IModify,
+    IUIKitInteractionParam,
+} from "@rocket.chat/apps-engine/definition/accessors";
 import { SlashCommandContext } from "@rocket.chat/apps-engine/definition/slashcommands";
 import {
     UIKitInteractionContext,
@@ -126,7 +129,6 @@ export class DailyScheduleModal {
                             actionId: "multi_users_select_action_1",
                             appId: this.slashCommandContext.getSender().id,
                             blockId: "multi_users_select_block_1",
-
                         },
                     },
                 ],
@@ -134,12 +136,12 @@ export class DailyScheduleModal {
                     type: "button",
                     text: {
                         type: "plain_text",
-                        text: "Submit"
+                        text: "Submit",
                     },
                     appId: this.slashCommandContext.getSender().id,
                     blockId: "submit_block",
-                    actionId: "submit_action"
-                }
+                    actionId: "submit_action",
+                },
             },
             { triggerId: this.slashCommandContext.getTriggerId()! },
             this.slashCommandContext.getSender()
