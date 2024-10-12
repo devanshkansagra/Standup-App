@@ -21,7 +21,10 @@ export class StandupCommand implements ISlashCommand {
         "Organize Standup meetings for better productivity";
     providesPreview: boolean = false;
     public command = "standup";
-
+    public id: string = "";
+    constructor(app: StandupsApp) {
+        this.id = app.getID();
+    }
     async executor(
         slashCommandContext: SlashCommandContext,
         read: IRead,
@@ -43,8 +46,7 @@ export class StandupCommand implements ISlashCommand {
             const dailyScheduleModal = new DailyScheduleModal(
                 modify,
                 slashCommandContext
-            ).createDailyScheduleModal();
-            console.log(dailyScheduleModal);
+            ).createDailyScheduleModal(this.id);
         }
     }
 
