@@ -1,49 +1,24 @@
-import {
-    IModify,
-    IUIKitInteractionParam,
-    IUIKitSurfaceViewParam,
-} from "@rocket.chat/apps-engine/definition/accessors";
+import { IModify, IUIKitSurfaceViewParam } from "@rocket.chat/apps-engine/definition/accessors";
 import { SlashCommandContext } from "@rocket.chat/apps-engine/definition/slashcommands";
-import {
-    UIKitInteractionContext,
-    UIKitSurfaceType,
-    UIKitViewCloseInteractionContext,
-} from "@rocket.chat/apps-engine/definition/uikit";
+import { IUIKitSurface, UIKitSurfaceType } from "@rocket.chat/apps-engine/definition/uikit";
 
-export class DailyScheduleModal {
+export class WeeklyScheduleModal {
+
     public modify: IModify;
     public slashCommandContext: SlashCommandContext;
-    public uiInteractionContext: UIKitInteractionContext;
-
-    constructor(modify: IModify, slashCommandContext: SlashCommandContext) {
+    constructor (modify:IModify, slashCommandContext: SlashCommandContext) {
         this.modify = modify;
         this.slashCommandContext = slashCommandContext;
     }
 
-    public async createDailyScheduleModal(
-        id: string
-    ): Promise<IUIKitSurfaceViewParam> {
-        const modal: IUIKitSurfaceViewParam = {
-            id: "daily-schedule-modal",
+    public async createWeeklyScheduleModal (id: string) : Promise <IUIKitSurfaceViewParam> {
+        const modal:IUIKitSurfaceViewParam = {
             type: UIKitSurfaceType.MODAL,
             title: {
-                text: "Schedule Daily Standup Meeting",
+                text: "Schedule Weekly Standup Meeting",
                 type: "plain_text",
             },
             blocks: [
-                {
-                    type: "actions", // the action block
-                    blockId: "action_block_5",
-                    elements: [
-                        // the elements parameter contains the date picker block element definition
-                        {
-                            type: "datepicker",
-                            appId: id,
-                            blockId: "date_block_1",
-                            actionId: "date_action_1",
-                        },
-                    ],
-                },
                 {
                     type: "input",
                     label: {
@@ -52,9 +27,9 @@ export class DailyScheduleModal {
                     },
                     element: {
                         type: "time_picker",
-                        actionId: "fromTimeActionId",
+                        actionId: "time_picker_action_1",
                         appId: id,
-                        blockId: "fromTimeBlockId",
+                        blockId: "time_picker_action_block_1",
                     },
                 },
                 {
@@ -65,9 +40,28 @@ export class DailyScheduleModal {
                     },
                     element: {
                         type: "time_picker",
-                        actionId: "toTimeActionId",
+                        actionId: "time_picker_action_2",
                         appId: id,
-                        blockId: "toTimeBlockId",
+                        blockId: "time_picker_action_block_2",
+                    },
+                },
+                {
+                    type: "input",
+                    label: {
+                        type: "plain_text",
+                        text: "Day of the meeting",
+                    },
+                    element: {
+                        // the definition of the plain text input element
+                        type: "plain_text_input",
+                        appId: id,
+                        actionId: "plain_text_input_action_2",
+                        blockId: "plain_text_input_block_2",
+                        placeholder: {
+                            type: "plain_text",
+                            text: "Enter the day",
+                        },
+                        multiline: false,
                     },
                 },
                 {
@@ -80,8 +74,8 @@ export class DailyScheduleModal {
                         // the definition of the plain text input element
                         type: "plain_text_input",
                         appId: id,
-                        actionId: "channelActionId",
-                        blockId: "channelBlockId",
+                        actionId: "plain_text_input_action_1",
+                        blockId: "plain_text_input_block_1",
                         placeholder: {
                             type: "plain_text",
                             text: "Enter the Room Id",
@@ -97,9 +91,9 @@ export class DailyScheduleModal {
                     },
                     element: {
                         type: "multi_users_select",
-                        actionId: "usersActionId",
+                        actionId: "multi_users_select_action_1",
                         appId: id,
-                        blockId: "usersBlockId",
+                        blockId: "multi_users_select_block_1",
                     },
                 },
             ],
@@ -113,8 +107,7 @@ export class DailyScheduleModal {
                 blockId: "submit_block",
                 actionId: "submit_action",
             },
-        };
-
+        }
         await this.modify
             .getUiController()
             .openSurfaceView(

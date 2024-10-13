@@ -14,6 +14,7 @@ import { CommandEnum } from "../enums/commandEnum";
 import { UIKitSurfaceType } from "@rocket.chat/apps-engine/definition/uikit";
 import { DailyScheduleModal } from "../modals/DailyScheduleModal";
 import { StandupsApp } from "../StandupsApp";
+import { WeeklyScheduleModal } from "../modals/WeeklyScheduleModal";
 
 export class StandupCommand implements ISlashCommand {
     i18nParamsExample: string = "";
@@ -47,6 +48,12 @@ export class StandupCommand implements ISlashCommand {
                 modify,
                 slashCommandContext
             ).createDailyScheduleModal(this.id);
+        }
+        if (params[0] === CommandEnum.SCHEDULE && params[1] === "weekly") {
+            const weeklyScheduleModal = new WeeklyScheduleModal(
+                modify,
+                slashCommandContext
+            ).createWeeklyScheduleModal(this.id);
         }
     }
 
